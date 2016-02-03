@@ -1,5 +1,6 @@
 #!/bin/sh
-#Script to execute command on router
+# Script to execute ARP command on router Jazztel Comtrend HG536+
+# TODO: Still confirm command is applied
 
 host='192.168.1.1'
 user='admin'
