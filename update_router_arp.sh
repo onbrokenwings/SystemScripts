@@ -5,7 +5,7 @@
 host='192.168.1.1'
 user='admin'
 pass='23AdminR00'
-cmd='arp add 192.168.1.100'
+cmd='arp add 192.168.1.100 00:22:15:CA:10:A8'
 
 ( echo ${user}
 sleep 3
