@@ -1,0 +1,18 @@
+#!/bin/sh
+#Script to execute command on router
+
+host='192.168.1.1'
+user='admin'
+pass='23AdminR00'
+cmd='arp add 192.168.1.100'
+
+( echo ${user}
+sleep 3
+echo ${pass}
+sleep 3
+echo -e ${cmd} '\n'
+sleep 1
+echo -e '\n'
+sleep 3
+logger -c 'Update on ARP Table to Gateway Router' ${host}
+ ) | telnet ${host}
