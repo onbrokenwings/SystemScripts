@@ -15,5 +15,5 @@ echo -e ${cmd} '\n'
 sleep 1
 echo -e '\n'
 sleep 3
-logger -c 'Update on ARP Table to Gateway Router' ${host}
+logger -s 'Update on ARP Table to Gateway Router' ${host}
  ) | telnet ${host}
