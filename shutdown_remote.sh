@@ -1,8 +1,9 @@
 #!/bin/sh
 # Script to shutdown remote machine
 
+host='192.168.1.100'
 #site='http://$host:8000/?action=System.Shutdown'
-site='http://192.168.1.100:8000/?action=Shell.ExecutePredefined&command=Open%20calculator'
+site='http://$host:8000/?action=Shell.ExecutePredefined&command=Open%20calculator'
 reqstr='wget: not an http or ftp url'
 
 content = $(wget -q --spider $site)
