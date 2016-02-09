@@ -3,12 +3,12 @@
 
 host='192.168.1.100'
 #site='http://$host:8000/?action=System.Shutdown'
-site='http://$host:8000/?action=Shell.ExecutePredefined&command=Open%20calculator'
+site='http://'${host}':8000/?action=Shell.ExecutePredefined&command=Open%20calculator'
+reqstr='wget: not an http or ftp url'
 
 content = $(wget -q --spider $site)
 
-if [[ "$content" =~ "wget: not an http or ftp url" ]]
-then
+if [ -z "${content##*$reqstr*}" ] ;then
 	#logger -s 'Shutdown request was incorrect.'
 	echo 'Shutdown request was incorrect.'
 else
