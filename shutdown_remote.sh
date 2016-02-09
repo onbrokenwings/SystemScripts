@@ -1,17 +1,15 @@
+
 #!/bin/sh
 # Script to shutdown remote machine
 
 host='192.168.1.100'
-#site='http://$host:8000/?action=System.Shutdown'
-site='http://$host:8000/?action=Shell.ExecutePredefined&command=Open%20calculator'
-reqstr='wget: not an http or ftp url'
+site='http://'$host':8000/?action=System.Shutdown'
 
-content = $(wget -q --spider $site)
+ERROR=$(wget -q --spider $site 2>&1)
 
-if [ -z "${content##*$reqstr*}" ] ;then
-	#logger -s 'Shutdown request was incorrect.'
-	echo 'Shutdown request was incorrect.'
+if [ "$ERROR" = "" ]
+then
+	logger -s 'Shutdown to remote host was executed:' ${host}
 else
-	#logger -s 'Shutdown to remote host was executed: ' ${host}
-	echo 'Shutdown to remote host was executed: ' ${host}
+        logger -s 'Shutdown request was incorrect:' $ERROR
 fi
